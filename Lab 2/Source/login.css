@@ -1,0 +1,16 @@
+
+body{
+    background-image: url( "login.jpg");
+}
+.g-signin2{
+    width: 100%
+}
+.g-signin2 div{
+    margin: 0 auto;
+}
+.jumbotron{
+    background-color: transparent !important;
+}
+.container{
+    color: black;
+}
