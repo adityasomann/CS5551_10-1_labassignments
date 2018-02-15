@@ -1,0 +1,186 @@
+body {
+    background-image: url("home_back.jpg");
+    background-color: #cccccc;
+}
+
+h1 {
+    float: center;
+    text-align: center;
+}
+
+ul#links {
+
+    color: gold;
+    background-color: transparent;
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+
+
+li a {
+
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111111;
+}
+
+h2 {
+
+    background-color: chocolate;
+
+}
+
+#members {
+
+    background-color: transparent;
+    color: gold;
+    text-align: left;
+    font-size: large;
+}
+
+#logout span{
+
+    background-color: azure;
+    color: coral;
+    text-align: center;
+    size: A3;
+}
+
+#logout span:hover {
+
+    background-color: #cccccc;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: whitesmoke;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: gold;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: gray;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #2196F3;
+    color: gray;
+}
+
+.topnav .container1 {
+    float: right;
+}
+
+.topnav input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 20px;
+    font-size: 17px;
+    border: #2196F3;
+}
+
+.topnav .container1 button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.topnav .container1 button:hover {
+    background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+    .topnav .container1 {
+        float: none;
+    }
+    .topnav a, .topnav input[type=text], .topnav .container1 button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
+    .topnav input[type=text] {
+        border: 1px solid #ccc;
+    }
+}
+
+.datanav {
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.datanav p {
+
+    display: block;
+    color: azure;
+    text-align: left;
+    padding: 14px 16px;
+    text-decoration: powderblue;
+    font-size: large;
+}
+
+.botnav {
+    overflow: hidden;
+    background-color: hotpink;
+}
+
+.botnav a {
+    display: block;
+    color: aliceblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: gold;
+    font-size: 17px;
+
+}
+
+.botnav a:hover {
+    background-color: darksalmon;
+    color: black;
+}
+
+.botnav a.active {
+    background-color: #2196F3;
+    color: rebeccapurple;
+}
+
+/*button {
+
+    background-color: azure;
+    color: coral;
+    text-align: center;
+    size: A3;
+}
+
+button:hover {
+
+    background-color: #cccccc;
+
+}*/
+

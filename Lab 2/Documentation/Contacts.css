@@ -1,0 +1,22 @@
+body{
+
+    background-image: url("http://hdwallpapersrocks.com/wp-content/uploads/2013/10/Team-work-gives-success.jpg");
+    background-color: transparent;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th {
+
+    background-color: gold;
+    color: brown;
+
+}
+
+td {
+
+    color: chocolate;
+
+}

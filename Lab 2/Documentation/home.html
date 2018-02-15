@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="home.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="home.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<div><h1><b><i>CodusNatusEst</i></b></h1></div>
+
+<div class="topnav">
+    <a href="About.html">About</a>
+    <a href="Contacts.html">Contacts</a>
+    <div class = "container1">
+
+        <input type="text" placeholder="Search.." id="search">
+        <button onclick="search();" type="submit">Submit</button>
+
+    </div>
+</div>
+
+<div>
+    <h2>Members of the Team: </h2>
+    <ol id="members">
+        <li>Aditya Soman</li>
+        <li>Aravid Sheri</li>
+        <li>Sharath Koppu</li>
+        <li>Bhanu Sudheer Vallurupalli</li>
+    </ol>
+
+</div>
+
+<div class="datanav">
+
+    <h2>Searched Data</h2>
+    <p id="data"></p>
+
+</div>
+
+<div class="botnav">
+
+    <a href="login.html" onclick="logout()" class="btn btn-default">Logout</a>
+
+</div>
+
+</body>
+</html>
