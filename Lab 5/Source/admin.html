@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta t="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js" type="application/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+
+        h1{
+
+            text-align: center;
+            color: gold;
+
+        }
+
+        body{
+
+            background-image: url("https://sujithweb501.files.wordpress.com/2015/06/design.jpg");
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+
+        #detailsbtn{
+
+            text-align: center;
+
+        }
+        #details{
+
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+            display: inline-block;
+            border-radius: 4px;
+            background-color: darkgoldenrod;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            width: 50%;
+
+        }
+
+        #details:hover{
+
+            background-color: green; /* Green */
+            color: white;
+
+        }
+
+        #deleteDiv{
+
+                text-align: center;
+
+        }
+
+        #userid{
+
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+
+        }
+
+        #deleteBtn{
+
+            background-color: darkred;
+            color: black;
+            border: 2px solid #4CAF50;
+            width: 50%;
+            color: whitesmoke;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+
+        }
+
+        #updatedetails{
+
+            text-align: center;
+
+        }
+
+        .form-control{
+
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+
+        #update{
+
+            background-color: chocolate;
+            color: black;
+            border: 2px solid #4CAF50;
+            width: 50%;
+            color: whitesmoke;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+
+
+        }
+    </style>
+</head>
+
+<body ng-app="admin" data-ng-controller="AdminController">
+
+<h1>Admin Access Page</h1>
+
+<div id="detailsbtn">
+<button id="details" ng-click="getDetails()">Get Details of Users</button>
+</div>
+
+<br><br>
+
+<table id="users">
+        <tr>
+            <th>User ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email Address</th>
+            <th>Password</th>
+        </tr>
+
+</table>
+
+<br><br>
+<div id = "deleteDiv">
+<input type="text" placeholder="Enter User ID" id="userid">
+<br><br>
+
+<button id="deleteBtn" data-ng-click="delete()">Delete User</button>
+
+<br><br>
+
+</div>
+
+<div id="updatedetails">
+
+    <input type="text" class="form-control" id="firstnames" placeholder="Enter First Name" ng-model="formData.fname" required />
+    <br>
+    <input type="text" class="form-control" id="lastnames" ng-model="formData.lname" placeholder="Enter Last Name" required />
+    <br>
+    <input type="email" class="form-control" id="email" ng-model="formData.email" placeholder="Enter Email Address" required />
+    <br>
+
+    <button id="update" data-ng-click="updateDetails()">Update User</button>
+
+
+</div>
+
+
+
+
+</body>
+</html>
+
+<script>
+
+    var app = angular.module("admin", [])
+    app.controller("AdminController", function ($scope, $http,$window, $httpParamSerializerJQLike) {
+        //$http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+        //
+        $scope.myVar = true;
+        $scope.pageClass = 'index';
+        $scope.getDetails = function () {
+            console.log("inside login function");
+            var table = document.getElementById("users")
+
+            $http({
+                method: 'GET',
+                    url: 'https://api.mongolab.com/api/1/databases/aselab5/collections/ase?apiKey=lwB5jOdG6HHA-fn_2KfRkiZoOVOWdiP8'
+            }).success(function (data) {
+                var obj = angular.fromJson(data);
+                var count = 0;
+                for (i = 0; i < obj.length; i++) {
+
+                    var rowCount = table.rows.length;
+                    var row = table.insertRow(rowCount);
+
+                    row.insertCell().innerHTML = obj[i]._id.$oid;
+                    row.insertCell().innerHTML = obj[i].fname;
+                    row.insertCell().innerHTML = obj[i].lname;
+                    row.insertCell().innerHTML = obj[i].email;
+                    row.insertCell().innerHTML = obj[i].password;
+
+
+                }
+
+            })
+        }
+
+        $scope.delete = function() {
+            console.log("inside login function");
+            var user_id = document.getElementById("userid").value;
+            $http({
+                method: 'DELETE',
+                async: true,
+                url : 'https://api.mongolab.com/api/1/databases/aselab5/collections/ase/' + user_id + '?apiKey=lwB5jOdG6HHA-fn_2KfRkiZoOVOWdiP8',
+                timeout: 300000
+            }).success(function() {
+                alert("Deleted Successfully");
+                $window.location.href = 'index.html';
+            })
+        }
+
+        $scope.updateDetails = function(){
+
+            var user_id = document.getElementById("userid").value;
+
+            var first_name = document.getElementById("firstnames").value;
+            var last_name  = document.getElementById("lastnames").value;
+
+            var emailid = document.getElementById("email").value;
+
+            $http({
+                method: 'PUT',
+                url : 'https://api.mongolab.com/api/1/databases/aselab5/collections/ase/' + user_id + '?apiKey=lwB5jOdG6HHA-fn_2KfRkiZoOVOWdiP8',
+                data: JSON.stringify({
+                    "$set": {
+                        fname: first_name,
+                        lname: last_name,
+                        email: emailid
+                    }
+                }),
+                contentType: "application/json"
+            }).success(function () {
+
+                alert("Updated Successfully");
+                $scope.myVar = !$scope.myVar;
+                $scope.updateVar=!$scope.updateVar;
+                // $scope.msg ="User created successfully";
+            })
+
+        }
+
+
+
+    });
+
+
+
+</script>
